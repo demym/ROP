@@ -1,0 +1,80 @@
+<%
+
+ var dat=data;
+ 
+
+ function getfield(campo){
+  var retvalue="fungia";
+  if (dat.doc){
+     if (dat.doc[campo]) retvalue=dat.doc[campo];
+  }
+
+  return retvalue
+ }
+
+%>
+
+<div id="wfediv" style="border: 2px solid blue">
+<div id="docdiv">
+<form id="doc" name="doc" method="post" action="">
+<table>
+<tr><td>campo1</td><td><input type="text" name="campo1" id="campo1"   value="<%= getfield('campo1') %>"/></td></tr>
+<tr><td>campo2</td><td><input type="text" name="campo2" value="<%= getfield('campo2') %>" id="campo2" /></td></tr>
+<tr><td>campo3</td><td><input type="text" id="campo3" /></td></tr>
+<tr><td>campo4</td><td><input type="text" id="campo4" /></td></tr>
+
+</table>
+</div>
+</form>
+<form id="wfe" name="wfe" method="post" action="">
+<div class="wfefields" style="border:1px solid silver; padding: 2px;">
+<div class="actions">
+ <table>
+ <tr>
+ <%
+   var act=data.wfe.actions; 
+   for (var i=0; i<act.length; i++){
+    var buttonid=act[i].endstatus;
+ %>
+   <td><input type="button" onclick="doAction(this.id)" id="<%= buttonid %>" value="<%= act[i].description %>"/></td>
+   
+   
+   <%
+   
+   }
+   
+   %>
+   </tr>
+ 
+ </table>
+
+</div>
+
+
+<table border="1">
+<%
+  var dat=data.wfe;
+  for (var k in dat) {
+   if (!Array.isArray(dat[k]))
+   if (1==1)
+   {
+    
+%>
+  <tr><td><i><%= k %></i></td><td><input type="text" name="<%=k%>"  id="<%=k%>" value="<%= dat[k] %>" /></td></tr>  
+  
+ <% 
+ }
+  }
+  
+  
+ %>
+
+</table>
+</div>
+</div>
+
+
+
+
+</form>
+

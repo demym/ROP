@@ -1,0 +1,66 @@
+<link type="text/css" rel="stylesheet" href="lib/ion-tree-list/ion-tree-list.css"/>
+
+<script type="text/ng-template" id="item_default_renderer">
+    <span class="symbol">
+        <i class="icon" ng-if="item.tree.length > 0" ng-class="item.tree.collapsed ? 'ion-arrow-right-b' : 'ion-arrow-down-b'"></i>
+    </span>
+    {{item.name}}
+</script>
+
+<script type="text/ng-template" id="items_renderer">
+    <ion-item class="item depth-{{item.depth}}"
+              ng-click="toggleCollapse(item)"
+			  sng-include="item_default_renderer"
+              sng-include="templateUrl">{{key}}:{{value}}
+    </ion-item>
+    <ion-list ng-model="item.esx"
+              ng-repeat="(key, value) in item[key]"
+              ng-hide="item.collapsed"
+              ng-include="'items_renderer'">
+    </ion-list>
+</script>
+
+<script type="text/ng-template" id="demy_renderer">
+ <ion-item style="background: yellow" class="item depth-{{item.depth}}"
+	          ng-repeat="(key, value) in items[$index]"
+              ng-click="toggleCollapse(item)"
+              sng-include="templateUrl">{{key}}:{{value}}:{{$index}}
+</ion-item>
+</script>			  
+
+<div class="list" style="border: 1px solid blue" ng-model="items">
+    <!--<ion-item ng-repeat="(key, value) in items" ng-click="toggleCollapse(item)" sng-include="'items_renderer'">{{key}}</ion-item>-->
+	
+
+	 <ion-item style="background: yellow" class="item depth-{{item.depth}}"
+	          ng-repeat="(key, value) in items"
+              ng-click="toggleCollapse(item)"
+              sng-include="templateUrl">{{key}}:{{value}}:{{$index}}
+			  
+			  <!--<div style="border: 1px solid orange"
+			   ng-model="items[$index]"
+			   ng-repeat="(key, value) in items[$index]"
+			  
+			  >{{$index}}{{key}}
+			  
+			  
+			  </div>-->
+			  
+			   <ion-list ng-model="items[$index]"
+              sng-repeat="(key,value) in items[$index]"
+              sng-hide="item.collapsed"
+              ng-include="'demy_renderer'">
+             </ion-list>
+			  
+			
+		
+    </ion-item>
+	 
+	
+	
+	
+  
+	
+	
+	
+</div>

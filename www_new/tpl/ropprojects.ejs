@@ -1,0 +1,23 @@
+<ul data-role="listview" id="ulprojects" class="ui-listview">
+
+<%
+ 
+ for (var i=0; i<data.length; i++){
+ 
+
+%>
+
+ <li><a href="#" onclick="openProject('<%=data[i]._id%>')">
+   <%=data[i].doc.minchia%><br>
+   <span class="small">Stato: <b><%=data[i].wfe.status%></b></span><br>
+ </a></li>
+
+
+
+<% 
+
+ }
+ 
+%> 
+
+</ul>

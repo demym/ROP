@@ -1,0 +1,24 @@
+/* Empty. Add your own CSS if you like */
+
+.fixbutton {
+ width: 250px;
+}
+
+.cardx {
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+padding-bottom: 9px;
+/*padding-top: 9px;*/
+
+}
+
+.cardx {
+    background-color: #fff;
+    border-radius: 2px;
+    margin: 5px 10px;
+    overflow: hidden;
+}
+
+.bg {
+  background: url($big-bg) no-repeat center center fixed;
+  background-size: cover;
+}

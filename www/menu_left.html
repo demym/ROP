@@ -1,0 +1,19 @@
+ <header class="bar bar-header bar-stable">
+      <h1 class="title">&nbsp;</h1>
+    </header>
+    <ion-content class="has-header">
+      <ion-list>
+        <ion-item nav-clear menu-close href="#/app/homepage">
+          <i class="icon ion-home"></i>&nbsp;&nbsp;Homepage
+        </ion-item>
+        <ion-item nav-clear menu-close href="#/app/ropprojects">
+          <i class="icon ion-calendar"></i>&nbsp;&nbsp;ROP Projects
+	     </ion-item>
+		  <ion-item nav-clear menu-close ng-click="openProject()" ng-controller='RopprojectsCtrl'>
+          <i class="icon ion-home"></i>&nbsp;&nbsp;Create project
+   
+
+        </ion-item>
+		
+      </ion-list>
+    </ion-content>

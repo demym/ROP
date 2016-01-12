@@ -1,0 +1,42 @@
+<ion-view title="ROP Projects"  hide-back-button="true" ng-controller="HomepageCtrl" ng-init="refreshProjects()" >
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+  <ion-nav-buttons side="right">
+    <button menu-toggle="right"class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+   <ion-header-bar class="bar bar-subheader bar-dark">
+          <h1 class="title">{{projects.length}} projects found</h1><!--<button class="button button-positive">Submit</button><button class="button button-positive">Save</button>-->
+        </ion-header-bar>
+  <ion-content class="has-subheader bg">
+ 
+ 
+   <!--<button class="button button-block button-positive" ng-click="refreshProjects()">Refresh</button>
+   <button class="button button-block button-positive" ng-click="createWfeObject()">Create</button>-->
+   
+   <!-- <div class="cardx" sstyle="padding: 4px">
+	 <div class="item item-divider" onclick="toggleCard(this)">
+    {{projects.length}} projects found
+    </div>-->
+	
+   </div>
+
+  <ion-list>
+  <ion-item sclass="card" ng-repeat="project in projects" ng-click="openProject('{{project._id}}')" >
+   <div class="sitem item-divider" sonclick="toggleCard(this)">
+    <b>{{project.doc.titolo}}<br></b>
+    </div>
+  <div class="sitem item-text-wrap">
+  <i class="small" style="color: gray">{{project._id}}</i><br>
+  {{project.doc.minchia}}<br>
+  Status: <b>{{project.wfe.status}}</b>
+</div>
+  </ion-item>
+  </ion-list>
+  </ion-content>
+  
+<div class="bar bar-footer bar-positive">
+  <div class="title">Footer</div>
+</div>
+
+</ion-view>

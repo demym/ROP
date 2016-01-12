@@ -1,0 +1,289 @@
+<ion-view title="ROP Project"  hide-back-button="false"   >
+  <!--<ion-nav-buttons side="left">
+    <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>-->
+   <!--<ion-header-bar class="bar bar-subheader bar-dark">
+          <button class="button button-small button-dark">Submit</button><button class="button button-dark">Save</button>
+        </ion-header-bar>-->
+  <ion-content class="has-subheader">
+  <style type="text/css">
+  css { font-size: 11px;}
+  </style>
+ 
+   <div id="objname" class="card" sstyle="padding: 4px">
+   <div class="item item-divider">
+   <b>{{formdata.wfe.s_object.toUpperCase()}}</b>
+   </div></div>
+   
+   <div id="generaldata" class="card" sstyle="padding: 4px" sng-if="formdata.wfe.status=='WORKINPROGRESS'" >
+   <div class="item item-divider" onclick="toggleCard(this)">
+    General Data <a href="#" sonclick="toggleCard(this)" class="item-icon-right">
+            <i class="icon ion-minus"></i>
+        </a>
+    </div>
+	
+	<div class="item item-text-wrap">
+	
+	<label class="item item-input">
+    <span class="input-label">ID</span>
+	<b><i>{{formdata._id}}</i></b>
+    </label>
+
+	
+	<label class="item item-input">
+    <span class="input-label">Description</span>
+    <input type="text" class="wfedoc" placeholder="Description" ng-model="formdata.doc.titolo" />
+    </label>
+	
+	<label class="item item-input">
+    <span class="input-label">Customer</span>
+    <select class="wfedoc" placeholder="Customer" ng-model="formdata.doc.customer" ><option>Customer1</option><option>Customer2</option><option>Customer3</option></select>
+    </label>
+	
+	<label class="item item-input">
+    <span class="input-label">Work order</span>
+    <input type="text" class="wfedoc" placeholder="Work order" ng-model="formdata.doc.workorder" />
+    </label>
+	
+	<label class="item item-input">
+    <span class="input-label">Created</span>
+	<span>Created by <b>{{formdata.wfe.user_created}}</b> on <b>{{formdata.wfe.date_created}}</b></span>
+    <input type="hidden" readonly class="wfedoc" placeholder="Created by" ng-model="formdata.wfe.user_created" /><input type="hidden" readonly class="wfedoc" placeholder="creation date" ng-model="formdata.wfe.date_created" />
+    </label>
+	
+	<label class="item item-input">
+    <span class="input-label">Modified</span>
+	<span>Modified by <b>{{formdata.wfe.user_modified}}</b> on <b>{{formdata.wfe.date_modified}}</b></span>
+     <input type="hidden" readonly class="wfedoc" placeholder="Created by" ng-model="formdata.wfe.user_modified" /><input type="hidden" readonly class="wfedoc" placeholder="creation date" ng-model="formdata.wfe.date_modified" />
+    </label>
+	
+	<label class="item item-input">
+    <span class="input-label">Project type</span>
+    <select class="wfedoc" placeholder="Customer" ng-model="formdata.doc.projecttype" >     <option>VSR</option>
+	</select>
+    </label>
+	
+	<label class="item item-input">
+    <span class="input-label">Environment availability</span>
+    <input type="text"  class="wfedoc" placeholder="From" ng-model="formdata.doc.envstartdate" /><input type="text"  class="wfedoc" placeholder="to" ng-model="formdata.doc.envenddate" />
+    </label>
+	
+	
+		<label class="item item-input">
+    <span class="input-label">Status</span>
+	<b>{{formdata.wfe.status}}</b>
+    </label>
+	
+		<label class="item item-input">
+    <span class="input-label">Minchia</span>
+    <input type="text" class="wfedoc" placeholder="Minchia" ng-model="formdata.doc.minchia" />
+    </label>
+	
+	
+	 
+	
+
+   
+	
+	
+	</div>
+	
+	</div>
+
+	
+   
+
+   
+  
+   <!-- requester data -->
+   <div id="requesterdata" class="card" sstyle="padding: 4px">
+   <div class="item item-divider" onclick="toggleCard(this)">
+    Requester Data <a href="#" sonclick="toggleCard(this)" class="item-icon-right">
+            <i class="icon ion-minus"></i>
+        </a>
+    </div>
+	 <div class="item item-text-wrap">
+	 
+	<label class="item item-input">
+    <span class="input-label">First name</span>
+    <input type="text" class="wfedoc" placeholder="First name" ng-model="formdata.doc.requesterfirstname" />
+    </label>
+	
+	<label class="item item-input">
+    <span class="input-label">Last name</span>
+    <input type="text" class="wfedoc" placeholder="Last name" ng-model="formdata.doc.requesterlastname" />
+    </label>
+	
+	<label class="item item-input">
+    <span class="input-label">Phone</span>
+    <input type="text" class="wfedoc" placeholder="Phone" ng-model="formdata.doc.requesterphone" />
+    </label>
+	
+	<label class="item item-input">
+    <span class="input-label">E-mail</span>
+    <input type="text" class="wfedoc" placeholder="E-mail" ng-model="formdata.doc.requesteremail" />
+    </label>
+	
+	
+	 
+
+	
+	
+	
+	
+	
+	 </div>
+	</div> 
+	
+	
+	<!-- Network configuration -->
+	<div id="networkconfig" class="card" sstyle="padding: 4px">
+   <div class="item item-divider" onclick="toggleCard(this)">
+    Network configuration <a href="#" sonclick="toggleCard(this)" class="item-icon-right">
+            <i class="icon ion-minus"></i>
+        </a>
+    </div>
+	 <div class="item item-text-wrap">
+	 
+	 
+	 <label class="item item-input">
+    <span class="input-label">Network type</span>
+    <select class="wfedoc" placeholder="Network type" ng-model="formdata.doc.customer" ><option>Custom network</option></select>
+    </label>
+	
+	 
+	 <label class="item item-input">
+    <span class="input-label">Add VLAN</span>
+    <button class="button button-small button-positive" ng-click="addVlan()">Add VLAN</button>
+    </label>
+	
+	 
+	
+	
+	
+	 
+
+	
+	
+	<!--<div class="item item-text-wrap">-->
+	 
+	 <!-- VLANS -->
+	 <div id="vlan" class="card" sstyle="padding: 4px">
+   <div class="item item-divider" onclick="toggleCard(this)">
+    VLANs ({{formdata.doc.CustomerInfrastructure.Network.vlan.length}})<a href="#" sonclick="toggleCard(this)" class="item-icon-right">
+            <i class="icon ion-minus"></i>
+        </a>
+    </div>
+	 <div class="item item-text-wrap">
+	<!-- <div class="cardx" style="padding: 4px"><button class="button button-small button-positive" ng-click="addVlan()">Add VLAN</button></div>-->
+	
+	 
+	 <div class="cardx row responsive-sm" ng-repeat="vlan in formdata.doc.CustomerInfrastructure.Network.vlan">
+	 <div class="col" style="width: 10px; v-align: center">{{$index+1}}</div>
+	 <div class="col col-10"><a class="button button-icon icon ion-trash-a" ng-click="deleteVlan('{{vlan.xid}}')"></a></div>
+	 <div class="col"><input type="text" ng-model="vlan.xid" /></div>
+	 <div class="col"><input type="text" ng-model="vlan.portgroup" /></div>
+	 <div class="col"><input type="text" ng-model="vlan.address" /></div>
+	 <div class="col"><input type="text" ng-model="vlan.vlan" /></div>
+	 </div>
+	 </div>
+	 </div>
+	
+	<!--</div>-->
+</div>
+</div>
+	
+	
+	
+   <!-- RestoreToVirtual -->
+
+   	<div id="restoretovirtual" class="card" sstyle="padding: 4px">
+   <div class="item item-divider" onclick="toggleCard(this)">
+    Restore to Virtual<a href="#" sonclick="toggleCard(this)" class="item-icon-right">
+            <i class="icon ion-minus"></i>
+        </a>
+    </div>
+	 <div class="item item-text-wrap">
+	 
+	  <label class="item item-input">
+    <span class="input-label">Add Virtual Machine</span>
+    <button class="button button-small button-positive" ng-click="addVirtualMachine()">Add Virtual Machine</button>
+    </label>
+	 
+	 
+	    <!-- virtual machines -->
+		
+			<div id="vmtemplate" class="card" sstyle="padding: 4px" ng-repeat="vm in formdata.doc.CustomerInfrastructure.RestoreToVirtual.VirtualMachine">
+   <div class="item item-divider" onclick="toggleCard(this)">
+    VirtualMachine {{vm.name}}<a href="#" sonclick="toggleCard(this)" class="item-icon-right">
+            <i class="icon ion-minus"></i>
+        </a>
+    </div>
+	 <div class="item item-text-wrap">
+	  
+	  
+	  <label class="item item-input">
+    <span class="input-label">Cpu</span>
+    <input type="text" class="wfedoc" placeholder="Work order" ng-model="vm.cpu" />
+    </label>
+	
+	  <label class="item item-input">
+    <span class="input-label">Ram</span>
+    <input type="text" class="wfedoc" placeholder="Work order" ng-model="vm.ram" />
+    </label>
+	 
+	 
+	 </div>
+	 </div>
+	 
+	 
+	 </div>
+	 </div>
+   
+   
+   <!-- WFE -->
+
+   <div id="wfe" class="card" sstyle="padding: 4px" ng-if="formdata.wfe.actions.length>0">
+   <div class="item item-divider" onclick="toggleCard(this)">
+    Workflow <a href="#" sonclick="toggleCard(this)" class="item-icon-right">
+            <i class="icon ion-minus"></i>
+        </a>
+    </div>
+	 <div class="item item-text-wrap">
+	 
+	 <div class="button-bar" ng-repeat="act in formdata.wfe.actions">
+	 <button  class="button button-block button-positive" id="{{act.endstatus}}" ng-click=performAction("{{act.endstatus}}") >{{act.description}}</button>
+	 </div>
+	 
+     <!--<wfedoc all="alldata" doc="formdata"></wfedoc>-->
+	 </div>
+	 </div>
+     
+   
+
+   
+   
+   
+   
+   </div>
+    <div id="obj" class="card" sstyle="padding: 4px">
+	 <div class="item item-divider" onclick="toggleCard(this)">
+    View object<a href="#" sonclick="toggleCard(this)" class="item-icon-right">
+            <i class="icon ion-minus"></i>
+        </a>
+    </div>
+	 <div class="item item-text-wrap">
+   <div id="object"></div>
+   </div>
+   </div>
+   
+   <div id="element"></div> 
+
+
+  </ion-content>
+  
+<div class="bar bar-footer bar-balanced">
+  <div class="title">Footer</div>
+</div>
+
+</ion-view>

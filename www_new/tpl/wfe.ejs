@@ -1,0 +1,12 @@
+<%
+
+ for (var i=0; i<data.actions.length; i++) {
+  
+ %> 
+ 
+ <a class="ui-btn ui-shadow ui-btn-corner-all ui-btn-up-c" data-role="button" href="#" onclick="doAction('<%=data.s_object%>','<%=data.actions[i].endstatus%>')"><%=data.actions[i].description%></a>
+ 
+ <%
+ }
+
+%>
