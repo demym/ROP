@@ -22,3 +22,14 @@ padding-bottom: 9px;
   background: url($big-bg) no-repeat center center fixed;
   background-size: cover;
 }
+
+.bar-subheaderx {
+
+  position: absolute;
+  top: 40px;
+
+}
+
+.button-smallx {
+  width: 100px;
+}

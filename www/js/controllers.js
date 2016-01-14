@@ -1,6 +1,12 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope) {})
+.controller('DashCtrl', function($scope) {
+	
+	//
+	
+	
+	
+})
 
 
 
@@ -17,6 +23,13 @@ angular.module('starter.controllers', [])
   $scope.remove = function(chat) {
     Chats.remove(chat);
   };
+  
+  $scope.funzione=function(parm) {
+	  
+	  alert("coccodrillo:" +$scope.coccodrillo);
+	  
+	  
+  }
 })
 
 .controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
@@ -25,15 +38,26 @@ angular.module('starter.controllers', [])
 
 .controller('HomepageCtrl', function($scope, $stateParams, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);
+  
+
+  
+  
+  
+  
+  
 })
 
 .controller('RopprojectsCtrl', function($scope, $stateParams, Chats,wfe,$state,globals) {
   
   $scope.projects=[];
   
+  
   $scope.refreshProjects=function() {
 	  
+	  
 	   globals.loadingShow();
+	   
+	   
 	   wfe.listObjects("ropproject",function(data){
 		   
 		   $scope.projects=data.rows;
@@ -104,6 +128,51 @@ angular.module('starter.controllers', [])
 	
 	$scope.formdata=$scope.alldata;
 	
+	  $scope.performSave=function(callback) {
+		  
+	
+		 // console.log($scope)
+		  
+		  var url=globals.rooturl+"/wfe/dosave";
+		  var wfe = $scope.alldata.wfe;
+
+	      /*var fd={
+	         doc: $scope.alldata.doc,
+	         wfe: $scope.alldata.wfe
+	   
+	       }*/
+		   
+		   
+		  globals.loadingShow();
+		  
+		  
+		  $http.post(url,{
+			  sdata: JSON.stringify($scope.alldata)
+				  
+			  
+		  })
+		  .success(function(data){
+			  $scope.formdata=data;
+			  globals.loadingHide();  
+			  
+	          doNestWfe(data); 
+			  
+			  if (callback) callback(data)
+			  globals.toast("Save performed");	  
+			  
+			 /* $('#element').empty().jsonView(data);
+		  $('#element ul').removeClass().css("border","1px solid black").collapsible();*/
+	
+	//$('#element ul').collapsible("expand");
+		  })
+		  .error(function(data){
+			  globals.loadingHide();  
+			  if (callback) callback(data)
+			  
+		  })
+	  }
+	
+	
 	
 	  $scope.performAction=function(actionid,callback) {
 		  
@@ -163,6 +232,7 @@ angular.module('starter.controllers', [])
 		
 		$scope.alldata.doc.CustomerInfrastructure.Network.vlan.push(newvlan);
 		globals.toast("VLAN added")
+		$scope.formdata=$scope.alldata;
 		
 	}
 	
@@ -232,6 +302,7 @@ angular.module('starter.controllers', [])
 		}
 		
 		$scope.alldata.doc.CustomerInfrastructure.RestoreToVirtual.VirtualMachine.push(newvm);
+		$scope.formdata=$scope.alldata;
 		globals.toast("Virtual Machine added");
 		
 	}
@@ -245,43 +316,11 @@ angular.module('starter.controllers', [])
   };
 });
 
+
+
+
 var nest=""
-/*
-function nestObject(obj) {
-	
-	for (var k in obj) {
-			  
-			  console.log(k+" isarray: "+toString.call(obj[k]))
-			  
-			  
-			  if (toString.call(obj[k]) === '[object Object]')
-			  {
-				 //element.append("--"+k+"<br>")	
-				 
-				 //nest+="<li style='background: yellow'>"+k+"<ul style='border:1px solid black'>";
-				 nest+="<ion-item style='background: yellow' onclick='toggleGroup(this)'>"+k+"</ion-item><ion-item class='item'><ion-list>"
-				 nestObject(obj[k]);
-				 nest+="</ion-list></ion-item>"
-                // element.append("<demytree  items='subitem'></demytree>") 				 
-				  
-			  } else {
-				  
-				  //nest+="<li style='background: cyan'>"+k+": "+obj[k]+"</li>";
-				  nest+="<ion-item class='item'><label>"+k+"</label><input type=text placeholder='"+k+"' value='"+obj[k]+"' /></ion-item>";
-				  //element.append(k+"-"+scope.items[k]+"<br>")	
-				  
-			  }
-			 
-			  
-			 
-			 
-		 }	
-			
-	
-	
-	
-}
-*/
+
 function nestObjectJQM(obj) {
 	
 	console.log("nestobjectjqm")

@@ -81,6 +81,60 @@ router.get("/create/:object",function(req,res){
 })*/
 
 
+
+router.post("/dosave",function(req,res){
+    
+	
+	var body=req.body;
+	console.log(body);
+	
+	//var b=JSON.parse(body);
+	var b=JSON.parse(body.sdata);
+	//console.log(b);
+	var wfe=b.wfe;
+	var doc=b.doc;
+	
+	var status=wfe.status;
+	
+	
+	var today = new Date();
+	
+	var newobj={
+		doc: doc,
+		wfe: wfe
+	}
+	
+	newobj.wfe.date_modified=today.julian();
+	newobj.wfe.user_modified="dummyuser";
+	newobj.wfe.role_modified="dummyrole";
+	
+	/*if (b._id) newobj._id=b._id;
+	if (b._rev) newobj._rev=b._rev;*/
+	
+
+	  //save object to dbname
+	  var dbname="s_bo_"+newobj.wfe.s_object;
+	  
+	  dbs.update(dbname,newobj,function(sdata){
+		  
+		console.log("document "+newobj._id+" saved");
+        console.log(sdata); 
+        newobj._rev=sdata.rev;		
+		newobj._id=sdata.id;
+		res.send(newobj);  
+		  
+	  })
+	  
+	
+	  //res.render("bopage",{data: newobj});
+	  
+	
+	//res.send("executing action from "+body.status+" to "+body.nextstatus);
+	
+	
+})
+
+
 router.post("/doaction/:actionid",function(req,res){
     
 	var newstatus=req.params.actionid;

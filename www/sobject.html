@@ -2,8 +2,12 @@
   <!--<ion-nav-buttons side="left">
     <button menu-toggle="left"class="button button-icon icon ion-navicon"></button>
   </ion-nav-buttons>-->
-   <!--<ion-header-bar class="bar bar-subheader bar-dark">
-          <button class="button button-small button-dark">Submit</button><button class="button button-dark">Save</button>
+<!--<ion-header-bar class="bar bar-subheaderx bar-dark">
+          
+		 <div class="button-bar" ng-repeat="act in formdata.wfe.actions">
+	 <a  class=" button-smallx" id="{{act.endstatus}}" ng-click=performAction("{{act.endstatus}}") >{{act.description}}</a>
+	</div>
+
         </ion-header-bar>-->
   <ion-content class="has-subheader">
   <style type="text/css">
@@ -250,6 +254,8 @@
         </a>
     </div>
 	 <div class="item item-text-wrap">
+	 
+	 <button class="button button-dark" ng-click="performSave()">Save</button>
 	 
 	 <div class="button-bar" ng-repeat="act in formdata.wfe.actions">
 	 <button  class="button button-block button-positive" id="{{act.endstatus}}" ng-click=performAction("{{act.endstatus}}") >{{act.description}}</button>
